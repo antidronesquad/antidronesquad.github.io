@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anti Drone Squad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- vanilla js functions -->
+    <script type="text/javascript">
+        function bgOpacity(coordinate) {
+            const setAs = (coordinate / 100) + 3 + "%";
+            document.getElementById("bg").setAttribute("style", "-webkit-filter:opacity(" + setAs + ")");
+        }
+        function randomizeAndPlay() {
+            document.getElementById("random").click();
+            document.getElementById("play").click();
+        }
+    </script>
+    
+    <!-- jQuery functions -->
+    <script type="text/javascript">
+        $(document).mousemove(function (event) {
+            document.getElementById('coord-pageX').innerHTML = event.pageX;
+            document.getElementById('coord-pageY').innerHTML = event.pageY;
+            document.getElementById('coord-screenX').innerHTML = event.screenX;
+            document.getElementById('coord-screenY').innerHTML = event.screenY;
+            
+            const inputEVal = event.screenX;
+            const inputAVal = event.screenY + event.pageY;
+            
+            document.getElementById('inpute').value = inputEVal;
+            document.getElementById('inpute-read').value = inputEVal;
+            document.getElementById('inputa').value = inputAVal;
+            document.getElementById('inputa-read').value = inputAVal;
+            drawAll(numParticles, getVals());
+            bgOpacity(event.screenY);
+        });
+        $(document).click(function() {
+            document.getElementById("random").click();
+        });
+        $(document).ready(function() {
+            randomizeAndPlay();
+            setInterval(function() {
+                randomizeAndPlay();
+            }, 2000);
+        });
+    </script>
+</head>
+
+<body>
+    <canvas id="lissajous" class="stage"></canvas>
+    <div id="bg" class="bg"></div>
+    <div class='coordsPanel'>
+        <div>pageX</div>
+        <div id="coord-pageX">0</div>
+        <div>pageY</div>
+        <div id="coord-pageY">0</div>
+        <div>screenX</div>
+        <div id="coord-screenX">0</div>
+        <div>screenY</div>
+        <div id="coord-screenY">0</div>
+    </div>
+    <div hidden class="parametersPanel" id="wholeCanvas">
+        <label class="scale">
+            <div class="name">
+                Scale
+            </div>
+            <input type="range" min="-1" max="1" step="0.00001" />
+            <input class="readout" type="text" value="0.00" />
+        </label>
+        <label class="a">
+            <div class="name">A</div>
+            <input id="inputa" type="range" min="-3142" max="3142" step="0.0001" />
+            <input id="inputa-read" class="readout" type="text" value="0.00" />
+        </label>
+        <label class="b">
+            <div class="name">B</div>
+            <input type="range" min="-3142" max="3142" step="0.0001" />
+            <input class="readout" type="text" value="0.00" />
+        </label>
+        <label class="c">
+            <div class="name">C</div>
+            <input type="range" min="-3142" max="3142" step="0.0001" />
+            <input class="readout" type="text" value="0.00" />
+        </label>
+        <label class="d">
+            <div class="name">D</div>
+            <input type="range" min="-3142" max="3142" step="0.0001" />
+            <input class="readout" type="text" value="0.00" />
+        </label>
+        <label class="e">
+            <div class="name">E</div>
+            <input id="inpute" type="range" min="-3142" max="3142" step="0.0001" />
+            <input id="inpute-read" class="readout" type="text" value="0.00" />
+        </label>
+        <label class="f">
+            <div class="name">F</div>
+            <input type="range" min="-3142" max="3142" step="0.0001" />
+            <input class="readout" type="text" value="0.00" />
+        </label>
+        <div class="buttons">
+            <button id="random" class="randomize">Randomize</button>
+            <button class="save">Save</button><br />
+            <button id="play" class="play">Play</button>
+            <button class="stop">Stop</button>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

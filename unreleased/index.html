@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151908349-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-151908349-1');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anti Drone Squad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function bgOpacity(coordinate) {
+            const setAs = (coordinate / 100) + 3 + "%";
+        }
+
+        function randomizeAndPlay() {
+            document.getElementById("random").click();
+            document.getElementById("play").click();
+        }
+
+        // function randomizeNumbers() {
+        //     document.getElementById("coord-pageX").innerHTML = Math.floor((Math.random() * 1000) + 1);
+        //     document.getElementById("coord-pageY").innerHTML = Math.floor((Math.random() * 1000) + 1);
+        //     document.getElementById("coord-screenX").innerHTML = Math.floor((Math.random() * 1000) + 1);
+        //     document.getElementById("coord-screenY").innerHTML = Math.floor((Math.random() * 1000) + 1);
+        //     setTimeout(randomizeNumbers, 10);
+        // }
+    </script>
+
+    <!-- jQuery functions -->
+    <script type="text/javascript">
+        $(document).mousemove(function (event) {
+            document.getElementById('coord-pageX').innerHTML = event.pageX;
+            document.getElementById('coord-pageY').innerHTML = event.pageY;
+            document.getElementById('coord-screenX').innerHTML = event.screenX;
+            document.getElementById('coord-screenY').innerHTML = event.screenY;
+
+            const inputEVal = event.screenX;
+            const inputAVal = event.screenY + event.pageY;
+
+            document.getElementById('inpute').value = inputEVal;
+            document.getElementById('inpute-read').value = inputEVal;
+            document.getElementById('inputa').value = inputAVal;
+            document.getElementById('inputa-read').value = inputAVal;
+
+            drawAll(numParticles, getVals());
+            bgOpacity(event.screenY);
+        });
+
+        $(document).click(function () {
+            document.getElementById("random").click();
+        });
+
+        $(document).ready(function () {
+            if (/iP(hone|od)|android.+mobile|BlackBerry|IEMobile/i.test(navigator.userAgent)) {
+                window.location.replace("http://antidronesquad.net/unreleased/mob/");
+            }
+            console.log('>>>>>>> contact us: hello@antidronesquad.net');
+            // randomizeAndPlay();
+            // randomizeNumbers();
+        });
+    </script>
+</head>
+
+<body style="font-family: 'Roboto Mono', monospace;">
+    <canvas id="lissajous" class="stage"></canvas>
+    <div class='coordsPanel'>
+        <div class="row first-row">
+            <div class="col-sm-8">
+                <div class="blur1">
+                    anti drone squad
+                    <br>
+                    <br>
+                    <div>pageX <span id="coord-pageX">0</span></div>
+                    <div>pageY <span id="coord-pageY">0</span></div>
+                    <div>screenX <span id="coord-screenX">0</span></div>
+                    <div>screenY <span id="coord-screenY">0</span></div>
+                </div>
+                <div class="description">
+                    welcome! 
+                    <br>
+                    <br>
+                    here you can listen our upcoming, unreleased EP, and get a sense of the essence of our project.
+                    this is our first work, and it encapsules our first two years of sonic quest: who we are in frequencies, and where are we taking our music.
+                    in this lapse of time, we redefined our sound and esthetic a couple of times and made big decissions, such as moving the project from the remote island of Mallorca to the more alive city of Barcelona.
+                    <br>
+                    <br>
+                    this is a 4-track, 15 minutes, concept-heavy work that will be matched with a whole-length video of the same duration. the movie will guide you visually through the sounds, and it will help you resonate with the whole concept, the humble story we are telling.
+                    <br>
+                    <br>
+                    <span style="font-style: italic;">disclaimer: this is by no means the final sound. the tracks have been mastered in a provisional way. the cover is also a provisional decision.<span>
+                </div>
+                <div class="links">
+                    <a href="https://instagram.com/antidronesquad" target="_blank">instagram</a>
+                    <>
+                    <a href="https://soundcloud.com/antidronesquad" target="_blank">soundcloud</a>
+                    <>
+                    <a href="mailto:hello@antidronesquad.net" target="_blank">hello@antidronesquad.net</a>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <img class="promo-img" src="anti-drone-squad.jpg" style="height: 200px;">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 soundcloud">
+                <iframe align="center" style="width: 100%;" height="400" scrolling="no" frameborder="no"
+                    allow="autoplay"
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/904851247%3Fsecret_token%3Ds-Mmuw5&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+            </div>
+            <div class="col-sm-2 soundcloud">
+            </div>
+            <div class="col-sm-3 description">
+                <img style="margin-bottom: 0.2vw; width: 100%" src="movie.gif">
+                Small preview of our upcoming 15-minute video that will support the music<br>
+                In collaboration with Mateu Perpinya & Alona Vinç<br>
+            </div>
+            <div class="col-sm-3 description second-row">
+                <div style="padding-left: 40px;">
+                    <div style="font-weight: bold;">* 2020 *</div>
+                    <div>04/01 > Ameba als Clubs, Freedonia, Barcelona</div>
+                    <div>10/01 > LANDZA Club, Sala VOL, Barcelona</div>
+                    <div>25/01 > Tupper_6, Barcelona</div>
+                    <div>08/02 > TBA</div>
+                    <div style="font-weight: bold;">* 2019 *</div>
+                    <div>31/12 > Dublab BCN NYE Party, Barcelona</div>
+                    <div>28/12 > LANDZA en Palma, Sala Diskette, Palma</div>
+                    <div>13/12 > LANDZA Club, Sala Taro, Barcelona</div>
+                    <div>16/11 > Metrics Electrica, Barcelona</div>
+                    <div>27/09 > Dublab.es Showcase, Razzmatazz, Barcelona</div>
+                    <div>13/07 > Bar Central, Barcelona</div>
+                    <div>11/07 > Tremendo Line-Up, Abaixadors10, Barcelona</div>
+                    <div>07/07 > Palo Alto Market Fest, Barcelona</div>
+                    <div>22/06 > Vapor, Bus del Forum, Barcelona</div>
+                    <div>11/05 > LANDZA Club, Garage442, Barcelona</div>
+                    <div>05/04 > LANDZA Club, Sala Slow, Barcelona</div>
+                    <div>02/03 > Sentados en el Techo, Palma</div>
+                    <div>25/01 > Sala Diskette, Palma</div>
+                    <div style="font-weight: bold;">* 2018 *</div>
+                    <div>28/12 > Sala Diskette, Palma</div>
+                </div>
+            </div>
+        </div>
+        <!-- 
+        <div class="row">
+
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="col-sm-12 description">
+                <a href="instagram.com/antidronesquad">instagram</a><br>
+                <a href="instagram.com/soundcloud">soundcloud</a><br>
+                <br>
+                <a href="instagram.com/antidronesquad">hello@antidronesquad.net</a><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 description">
+                <div style="font-weight: bold;">* 2020 *</div>
+                <div>08/02 > TBT</div>
+                <div style="font-weight: bold;">* 2019 *</div>
+                <div>16/10 > TBT</div>
+                <div>27/09 > Dublab.es Showcase, Razzmatazz, Barcelona</div>
+                <div>13/07 > Bar Central, Barcelona</div>
+                <div>11/07 > Tremendo Line-Up, Abaixadors10, Barcelona</div>
+                <div>11/05 > LANDZA Club, Garage442, Barcelona</div>
+                <div>05/04 > LANDZA Club, Sala Slow, Barcelona</div>
+                <div>07/07 > Palo Alto Market Fest, Barcelona</div>
+                <div>02/03 > Sentados en el Techo, Palma</div>
+                <div>25/01 > Sala Diskette, Palma</div>
+                <div style="font-weight: bold;">* 2018 *</div>
+                <div>28/12 > Sala Diskette, Palma</div>
+            </div>
+        </div> -->
+    </div>
+
+
+    <div hidden class="parametersPanel" id="wholeCanvas">
+        <label class="scale">
+            <div class="name">
+                Scale
+            </div>
+            <input type="range" min="-1" max="1" step="0.00001" />
+            <input class="readout" type="text" value="0.00" />
+        </label>
+        <label class="a">
+            <div class="name">A</div>
+            <input id="inputa" type="range" min="-3142" max="3142" step="0.0001" />
+            <input id="inputa-read" class="readout" type="text" value="0.00" />
+        </label>
+        <label class="b">
+            <div class="name">B</div>
+            <input type="range" min="-3142" max="3142" step="0.0001" />
+            <input class="readout" type="text" value="0.00" />
+        </label>
+        <label class="c">
+            <div class="name">C</div>
+            <input type="range" min="-3142" max="3142" step="0.0001" />
+            <input class="readout" type="text" value="0.00" />
+        </label>
+        <label class="d">
+            <div class="name">D</div>
+            <input type="range" min="-3142" max="3142" step="0.0001" />
+            <input class="readout" type="text" value="0.00" />
+        </label>
+        <label class="e">
+            <div class="name">E</div>
+            <input id="inpute" type="range" min="-3142" max="3142" step="0.0001" />
+            <input id="inpute-read" class="readout" type="text" value="0.00" />
+        </label>
+        <label class="f">
+            <div class="name">F</div>
+            <input type="range" min="-3142" max="3142" step="0.0001" />
+            <input class="readout" type="text" value="0.00" />
+        </label>
+        <div class="buttons">
+            <button id="random" class="randomize">Randomize</button>
+            <button class="save">Save</button><br />
+            <button id="play" class="play">Play</button>
+            <button class="stop">Stop</button>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
